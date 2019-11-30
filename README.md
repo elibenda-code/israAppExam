@@ -17,6 +17,10 @@
 - When you click on the repository you want to open, the repository data will be saved in session
 
 
+#  file code # 
+- /Scripts/app.js
+- /Views/Home/Index.cshtml
+- /Controllers/HomeController.cs
 
 
 
