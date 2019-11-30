@@ -1,0 +1,36 @@
+﻿body {
+}
+.headerpage{
+    text-align:center;
+}
+.ListBox{
+    display:flex;        
+}
+.ListBoxRight{
+    width:10%;
+}
+.ListBoxLeft{
+    width:89%;
+    margin-right: 51px;
+    display: flex;        
+    justify-content: center;
+    flex-flow: column wrap;    
+}
+.ListBoxUser{    
+    display: flex;
+    justify-content: center;
+}
+.ListBoxBookmark{
+    margin-right: 31%;
+    font-size: 25px;
+}
+.ListBoxName{    
+}
+.ListGroupSize{margin-top: 20px;max-height:280px;overflow:auto;}
+.ListContentLongSize{max-height:400px;overflow:auto;}
+
+.ListContentSize{max-height:450px;overflow:auto;}
+
+.ListHeaderSize{
+    min-height:80px;
+}

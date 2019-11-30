@@ -1,0 +1,64 @@
+﻿@model israAppExam.Models.GitHubRipo
+<div ng-app="IsraSearchApp" ng-controller="IsraController as ctrl" class="container-fluid">
+    <div class="container">
+        <form ng-submit="ctrl.search(ctrl.searchData)">
+            <div class="row">             
+                <div class="col-lg-8 ">
+                    <input ng-model="ctrl.searchData" placeholder="הכנס מילת חיפוש" required class="form-control" style="display: inline-block;" type="text" />
+                    <button type="submit" class="btn btn-primary">חפש</button>                             
+                </div>
+                <!--end row-->
+            </div>
+</form>
+            <div class="row">
+                <div class="col-lg-12">                   
+                    <div class="list-group ListGroupSize">
+                        <!--display item from session-->
+                        @foreach (var item in Model.gItHubList)
+                        {
+                            <div class="list-group-item list-group-item-action" target="_blank">
+                                <div class="ListBox">
+                                    <div class="ListBoxRight">
+                                        <span class="glyphicon glyphicon-user ListBoxBookmark"></span>
+                                        <span class="ListBoxUser">@item.login</span>
+                                    </div>
+                                    <div class="ListBoxLeft">
+                                        <div class="ListBoxName">
+                                            <a href=@item.url class="" target="_blank">@item.name</a>
+                                        </div>
+                                        <div>@item.description</div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <!--end col-->
+                </div>
+                <!--end row-->
+            </div>
+            <div class="row">
+                <div class="col-lg-12">                  
+                    <!--Condition when results are returned-->
+                    <div ng-if="ctrl.searchResult.data.total_count > 0" style="margin-top:10px">
+                        <p>נמצאו {{ctrl.searchResult.data.total_count}} ערכים.</p>
+                            <div class="list-group ListContentSize">
+                                <!--Loop showing the results returned-->
+                                <div ng-repeat="item in ctrl.searchResult.data.items" class="list-group-item" style="line-height: 6px;">
+                                    <h2>שם המאגר -  {{item.full_name}}</h2>
+                                    <br />
+                                    <h4>תיאור -  {{item.description}}</h4>
+                                    <br />
+                                    <a ng-href="{{item.html_url}}" ng-click="AddToSession(this)" target="_blank">קישור למאגר- <strong> {{item.name}}</strong></a><br />
+                                </div>
+                            </div>
+                        </div>
+                    <!--Condition when no results returned-->
+                    <div ng-if="ctrl.searchResult.data.total_count == 0" style="margin-top:10px">
+                        <p>נמצאו {{ctrl.searchResult.data.total_count}} ערכים.</p>
+                    </div>
+                    <!--end col-->
+                </div>
+                <!--end row-->
+            </div>
+</div>
+</div>
